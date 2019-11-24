@@ -203,7 +203,7 @@ def load_acl13_lexicons():
         implicatives = set([l.strip() for l in lex])
     with open(os.path.join(os.getcwd(), "resources", "report_verbs.txt")) as lex:
         report_verbs = set([l.strip() for l in lex])
-    with open(os.path.join(os.getcwd(), "resources", "negative-words.txt")) as lex:
+    with open(os.path.join(os.getcwd(), "resources", "negative-words.txt"), encoding = "ISO-8859-1") as lex:
         negative = set([l.strip() for l in lex])
     with open(os.path.join(os.getcwd(), "resources", "positive-words.txt")) as lex:
         positive = set([l.strip() for l in lex])

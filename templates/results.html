@@ -1,39 +1,57 @@
-<!DOCTYPE html>
-<html lang="zxx">
-
-
-<row>
-    <panel>
-       <html>
-<title>Find the Truth | Unbias Information</title>
-
-<body style="background-color:black;">
-
-	<!-- Google font -->
-	<link href="https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i,900%7cRoboto:400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
-	<!-- Stylesheets -->
-	<link rel="stylesheet" href="static/bootstrap.min.css"/>
-	<link rel="stylesheet" href="static/font-awesome.min.css"/>
-	<link rel="stylesheet" href="static/magnific-popup.css"/>
-	<link rel="stylesheet" href="static/slicknav.min.css"/>
-	<!-- Main Stylesheets -->
-	<link rel="stylesheet" href="static/style.css"/>
-		<form action="/search" method = "get">			<div class="search-input si-v-2" top = "auto" left = "auto">			<input type="text-align:center" name = "search" placeholder="type here -- not google">			<button class="site-btn" value = "Submit" type="submit">Find the Truth</button>			</div>		</form>
-        <p style="text-align:left; font-size:300%; color: #FFFFFF">
-             Jokes its subjective, pls play again  		<ul style = "color: #FFFFFF">			<div>			{% for result in info %}			<li>			<a href = {{result[1]}} style = "color: #FFFFFF">{{result[0]}}</a>			<button class="site-btn">{{result[3]}}</button>			</li>			<li><a href = {{result[1]}}>{{result[1]}}</a></li>			<li>{{result[2]}}</li>			<li>{{result[3]}}</li>			{% endfor %}			</div>		</ul>
-
-
-          </p>
-       </html>
-    </panel>
-    <panel>
-       <!-- more content goes here, if needed -->
-    </panel>
-    <panel>
-       <!-- and even more content goes here, but only if needed -->
-    </panel>
- </row>
-
-
-
-
+<!DOCTYPE html>
+<html lang="zxx">
+
+
+<row>
+    <panel>
+       <html>
+<title>Find the Truth | Unbias Information</title>
+
+<body style="background-color:black;">
+
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i,900%7cRoboto:400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="static/bootstrap.min.css"/>
+	<link rel="stylesheet" href="static/font-awesome.min.css"/>
+	<link rel="stylesheet" href="static/magnific-popup.css"/>
+	<link rel="stylesheet" href="static/slicknav.min.css"/>
+	<!-- Main Stylesheets -->
+	<link rel="stylesheet" href="static/style.css"/>
+
+        <form action="/search" method = "get">			<div class="search-input si-v-2" top = "auto" left = "auto">			<input type="text-align:center" name = "search" placeholder="type here -- not google">			<button class="site-btn" value = "Submit" type="submit">Find the Truth</button>			</div>		</form>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 20px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 20px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-9exf{background-color:#000000;color:#ffffff;border-color:#000000;text-align:left;vertical-align:middle}
+.tg .tg-mkj1{background-color:#000000;color:#000000;border-color:#000000;text-align:left;vertical-align:top}
+.tg .tg-s1lt{background-color:#000000;color:#ffffff;border-color:#000000;text-align:left;vertical-align:middle}
+@media screen and (max-width: 767px) {.tg {width: auto !important;}.tg col {width: auto !important;}.tg-wrap {overflow-x: auto;-webkit-overflow-scrolling: touch;}}</style>
+<div class="tg-wrap"><table class="tg">
+  <tr>
+    <th class="tg-mkj1"></th>
+    <th class="tg-9exf"><font size = "+2">% Confidence</font></th>
+    <th class="tg-s1lt"></th>
+  </tr>  {% for result in info %}
+  <tr>
+    <td class="tg-mkj1"></td>
+    <td class="tg-9exf"><ul><button class="site-btn">{{result[3]}}%</button></ul></td>
+    <td class="tg-s1lt"><ul><a href =  {{result[1]}} style = "color: #FFFFFF">{{result[0]}}</a></ul>		<ul><a href = {{result[1]}}>{{result[1]}}</a></ul>		<ul>{{result[2]}}</ul>	</td>
+  </tr>  {% endfor %}
+</table></div>
+
+          </p>
+       </html>
+    </panel>
+    <panel>
+       <!-- more content goes here, if needed -->
+    </panel>
+    <panel>
+       <!-- and even more content goes here, but only if needed -->
+    </panel>
+ </row>
+
+
+
+

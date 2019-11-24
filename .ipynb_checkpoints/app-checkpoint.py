@@ -51,7 +51,7 @@ def index():
 def search():
     render_template("results.html")
     x = request.args.get('search')
-    searchResults = helpers.getSearchResults(x, 2)
+    searchResults = helpers.getSearchResults(x, 10)
     urls, titles, snippets = helpers.getInfo(searchResults)
     #urls = ["https://www.cnn.com/2019/11/22/politics/nunes-vienna-trip-ukrainian-prosecutor-biden/index.html", "https://www.theguardian.com/us-news/2019/nov/23/trump-impeachment-released-documents-reveal-giuliani-pompeo-links", "https://www.bbc.com/news/world-us-canada-39945744"]
     features = convertUrlsToFeatures(urls)
@@ -67,7 +67,11 @@ def search():
     return render_template("results.html", info = results)
     
 #starttimer = time.time()
-#convertUrlsToFeatures(["https://www.cnn.com/2019/11/22/politics/nunes-vienna-trip-ukrainian-prosecutor-biden/index.html", "https://www.cnn.com/2019/11/22/politics/nunes-vienna-trip-ukrainian-prosecutor-biden/index.html", "https://www.cnn.com/2019/11/22/politics/nunes-vienna-trip-ukrainian-prosecutor-biden/index.html"])
+results = helpers.getSearchResults("trump impeachment", 2)
+urls, titles, snippets = helpers.getInfo(results)
+features = convertUrlsToFeatures(urls)
+ix, preds = putItInDaModel(features)
+urls, titles, snippets = sortTheGoods(ix, urls, titles, snippets)
 #helpers.start(x[0], x[1], x[2], cat_dict, stem_dict, counts_dict, loaded_model, count_vect, tfidf_transformer, bias, assertives, factives, hedges, implicatives, report_verbs, positive_op, negative_op, wneg, wpos, wneu, sneg, spos, sneu)
 #endttimer = time.time()
 #print(endttimer - starttimer)
