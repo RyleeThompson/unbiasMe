@@ -58,7 +58,7 @@ def index():
 def search():
     render_template("results.html")
     x = request.args.get('search')
-    searchResults = helpers.getSearchResults(x, 10)
+    searchResults = helpers.getSearchResults(x, 2)
     urls, titles, snippets = helpers.getInfo(searchResults)
     #urls = ["https://www.cnn.com/2019/11/22/politics/nunes-vienna-trip-ukrainian-prosecutor-biden/index.html", "https://www.theguardian.com/us-news/2019/nov/23/trump-impeachment-released-documents-reveal-giuliani-pompeo-links", "https://www.bbc.com/news/world-us-canada-39945744"]
     features = convertUrlsToFeatures(urls)

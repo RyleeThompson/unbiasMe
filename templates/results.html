@@ -31,12 +31,12 @@
 <div class="tg-wrap">
 <table class="tg">
   <tr>
-    <th align = "left"><font size = "+1" color="white">% Confidence</font></th>
+    <th align = "right"><font size = "+0.5" color="white">% Confidence</font></th>
     <th></th>
 
   </tr>  {% for result in info %}
-  <tr style = "height:50px">
-    <td align = "right"><button class="site-btn" style ="margin-top: 0px">{{result[3]}}%</button></td>
+  <tr style = "height:50px; border:10px solid black">
+    <td align = "center" bgcolor = "red"><font color = "white">{{result[3]}}%</font></td>
     <td align = "left"><ul><a href =  {{result[1]}} style = "color: #FFFFFF">{{result[0]}}</a></ul>	<ul><a href = {{result[1]}}>{{result[1]}}</a></ul>	<ul><font color="white">{{result[2]}}</font></ul>	</td>
   </tr>  {% endfor %}
 </table></div>
