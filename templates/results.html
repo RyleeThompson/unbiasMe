@@ -5,7 +5,7 @@
 <row>
     <panel>
        <html>
-<title>Find the Truth | Unbias Information</title>
+<title>unbiasMe | unbiasMe Information</title>
 
 <body style="background-color:black;">
 
@@ -19,25 +19,25 @@
 	<!-- Main Stylesheets -->
 	<link rel="stylesheet" href="static/style.css"/>
 
-        <form action="/search" method = "get">			<div class="search-input si-v-2" top = "auto" left = "auto">			<input type="text-align:center" name = "search" placeholder="type here -- not google">			<button class="site-btn" value = "Submit" type="submit">Find the Truth</button>			</div>		</form>
+        <form action="/search" method = "get">			<div class="search-input si-v-2" top = "auto" left = "auto">			<input type="text-align:center" name = "search" placeholder="query">			<button class="site-btn" value = "Submit" type="submit">Search</button>			</div>		</form>
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
 .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 20px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 20px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-.tg .tg-9exf{background-color:#000000;color:#ffffff;border-color:#000000;text-align:left;vertical-align:middle}
-.tg .tg-mkj1{background-color:#000000;color:#000000;border-color:#000000;text-align:left;vertical-align:top}
-.tg .tg-s1lt{background-color:#000000;color:#ffffff;border-color:#000000;text-align:left;vertical-align:middle}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 10px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-9exf{background-color:#ff000a;color:#ffffff;border-color:#000000;text-align:left;vertical-align:middle}
+.tg .tg-mkj1{background-color:#ff000a;color:#000000;border-color:#000000;text-align:left;vertical-align:top}
+.tg .tg-s1lt{background-color:#ff000a;color:#ffffff;border-color:#000000;text-align:left;vertical-align:middle}
 @media screen and (max-width: 767px) {.tg {width: auto !important;}.tg col {width: auto !important;}.tg-wrap {overflow-x: auto;-webkit-overflow-scrolling: touch;}}</style>
-<div class="tg-wrap"><table class="tg">
+<div class="tg-wrap">
+<table class="tg">
   <tr>
-    <th class="tg-mkj1"></th>
-    <th class="tg-9exf"><font size = "+2">% Confidence</font></th>
-    <th class="tg-s1lt"></th>
+    <th align = "left"><font size = "+1" color="white">% Confidence</font></th>
+    <th></th>
+
   </tr>  {% for result in info %}
-  <tr>
-    <td class="tg-mkj1"></td>
-    <td class="tg-9exf"><ul><button class="site-btn">{{result[3]}}%</button></ul></td>
-    <td class="tg-s1lt"><ul><a href =  {{result[1]}} style = "color: #FFFFFF">{{result[0]}}</a></ul>		<ul><a href = {{result[1]}}>{{result[1]}}</a></ul>		<ul>{{result[2]}}</ul>	</td>
+  <tr style = "height:50px">
+    <td align = "right"><button class="site-btn" style ="margin-top: 0px">{{result[3]}}%</button></td>
+    <td align = "left"><ul><a href =  {{result[1]}} style = "color: #FFFFFF">{{result[0]}}</a></ul>	<ul><a href = {{result[1]}}>{{result[1]}}</a></ul>	<ul><font color="white">{{result[2]}}</font></ul>	</td>
   </tr>  {% endfor %}
 </table></div>
 
