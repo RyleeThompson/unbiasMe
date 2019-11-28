@@ -248,7 +248,7 @@ def start(title_text, text, source, cat_dict, stem_dict, counts_dict, loaded_mod
     liwc_cats_title = [t+"_title" for t in liwc_cats]
    
     if len(text) == 0:
-        raise ValueError("No Text")
+        return np.zeros(258)
 
     pid = 1
 

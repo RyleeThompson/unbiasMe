@@ -29,13 +29,20 @@ model = pickle.load(open('defaultRF.sav', 'rb'))
 
 def convertUrlsToFeatures(urls):
     features = []
+    currentIx = 0
+    badIxs = []
     for url in urls:
         result = helpers.scrape(url)
         print(result[1])
-        features.append(helpers.start(result[0], result[1], result[2], cat_dict, stem_dict, counts_dict, loaded_model, count_vect, tfidf_transformer, bias, assertives,
-                                      factives, hedges, implicatives, report_verbs, positive_op, negative_op, wneg, wpos, wneu, sneg, spos, sneu))
+        feature = helpers.start(result[0], result[1], result[2], cat_dict, stem_dict, counts_dict, loaded_model, count_vect, tfidf_transformer, bias, assertives,
+                                      factives, hedges, implicatives, report_verbs, positive_op, negative_op, wneg, wpos, wneu, sneg, spos, sneu)
+        if np.sum(feature) != 0:
+            features.append(feature)
+        else:
+            badIxs.append(currentIx)
+        currentIx += 1
     features = np.array(features)
-    return features
+    return features, badIxs
 
 def putItInDaModel(features):
     preds = model.predict_proba(features)[:, 1]
@@ -61,7 +68,11 @@ def search():
     searchResults = helpers.getSearchResults(x, 10)
     urls, titles, snippets = helpers.getInfo(searchResults)
     #urls = ["https://www.cnn.com/2019/11/22/politics/nunes-vienna-trip-ukrainian-prosecutor-biden/index.html", "https://www.theguardian.com/us-news/2019/nov/23/trump-impeachment-released-documents-reveal-giuliani-pompeo-links", "https://www.bbc.com/news/world-us-canada-39945744"]
-    features = convertUrlsToFeatures(urls)
+    features, badIxs = convertUrlsToFeatures(urls)
+    for ix in badIxs:
+        del urls[ix]
+        del titles[ix]
+        del snippets[ix]
     ix, preds = putItInDaModel(features)
     urls, titles, snippets = sortTheGoods(ix, urls, titles, snippets)
     preds = preds[::-1]*100
@@ -74,7 +85,7 @@ def search():
     return render_template("results.html", info = results)
     
 #starttimer = time.time()
-#results = helpers.getSearchResults("trump impeachment", 10)
+#results = helpers.getSearchResults("trump impeachment", 2)
 #urls, titles, snippets = helpers.getInfo(results)
 #features = convertUrlsToFeatures(urls)
 #ix, preds = putItInDaModel(features)
